@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <Header></Header>
     <h4>que pedo</h4>
   </div>
 </template>
