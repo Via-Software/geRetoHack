@@ -9,13 +9,19 @@ import axios from 'axios';
 
 export default {
     name:'Rutas',
+    data(){
+        return{
+            rutas:{},
+
+        }
+    },
     methods:{
         check(){
             // https://jsonplaceholder.typicode.com/todos
             // http://192.168.0.146:8080/buses
             axios.get('/buses')
             .then(function (response) {  
-                console.log(response);
+                console.log(response.data);
             })
             .catch(function (error) {  
                 console.log(error);
