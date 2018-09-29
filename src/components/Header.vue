@@ -9,6 +9,12 @@
 
 <script>
 export default {
-    
+    name: 'Header'
 }
 </script>
+
+<style>
+    nav{
+        padding: 30px
+    }
+</style>
