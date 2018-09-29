@@ -2,7 +2,8 @@
   <div class="home">
     <h4>que pedo</h4>
     <div class="container" id="bodyHome"> 
-      <button type="button" class="btn btn-primary btn-lg btn-block" @click="check">Rutas</button>
+      <!-- <button type="button" class="btn btn-primary btn-lg btn-block" @click="check">Rutas</button> -->
+      <router-link to="/rutas" class="btn btn-primary btn-lg btn-block" >Rutas</router-link>
       <button type="button" class="btn btn-primary btn-lg btn-block">Trazar Ruta</button>
     </div>
   </div>
