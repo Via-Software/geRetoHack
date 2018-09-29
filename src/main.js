@@ -5,6 +5,7 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 import './assets/css/bootstrap.min.css';
+
 Vue.config.productionTip = false;
 import axios from 'axios';
 
