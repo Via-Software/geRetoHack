@@ -18,14 +18,15 @@ export default {
   },
   methods:{
     check(){
-      
+
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
   #bodyHome{
-    padding-bottom: 0%
+    position: absolute;
+    bottom: 10%;
   }
 </style>
