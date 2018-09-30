@@ -1,6 +1,7 @@
 <template>
-    <div>
+    <div class="cotainer">
         <button type="button" class="btn btn-primary btn-lg btn-block" @click.prevent="check">Checar rutas</button>
+<<<<<<< HEAD
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Dropdown button
@@ -11,6 +12,11 @@
                 <a class="dropdown-item" href="#">Something else here</a>
             </div>
         </div>
+=======
+        <b-dropdown id="ddown1" text="Dropdown Button" class="">
+            <b-dropdown-item></b-dropdown-item>
+        </b-dropdown>
+>>>>>>> develop
     </div>
 </template>
 
