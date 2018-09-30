@@ -4,7 +4,7 @@
     <div class="container" id="bodyHome"> 
       <!-- <button type="button" class="btn btn-primary btn-lg btn-block" @click="check">Rutas</button> -->
       <router-link to="/rutas" class="btn btn-primary btn-lg btn-block" >Rutas</router-link>
-      <router-link to="/maps" class="btn btn-primary btn-lg btn-block" >Maps</router-link>
+      <router-link to="/trazar" class="btn btn-primary btn-lg btn-block" >Maps</router-link>
     </div>
   </div>
 </template>

@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Header from './components/Header'
 import Rutas from './views/Rutas.vue'
 import Maps from './views/testmaps.vue'
+import Trazar from './views/Trazar.vue'
 
 Vue.use(Router)
 
@@ -37,6 +38,13 @@ export default new Router({
       name: 'maps',
       components:{
         default: Maps,
+      }
+    },
+    {
+      path: '/trazar',
+      name: 'trazar',
+      components: {
+        default: Trazar,
       }
     }
   ]

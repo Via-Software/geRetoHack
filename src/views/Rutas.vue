@@ -1,10 +1,9 @@
 <template>
     <div class="cotainer">
-        <button type="button" class="btn btn-primary btn-lg btn-block" @click.prevent="check">Checar rutas</button>
+        <!-- <button type="button" class="btn btn-primary btn-lg btn-block" @click.prevent="check">Checar rutas</button> -->
         <b-dropdown id="ddown1" text="Dropdown Button" class="">
-            <b-dropdown-item></b-dropdown-item>
+            <b-dropdown-item v-for="(ruta, index) in rutas" :key="index">{{ruta}}</b-dropdown-item>
         </b-dropdown>
-
     </div>
 </template>
 
@@ -21,7 +20,13 @@ export default {
     methods:{
         check(){
             // http://192.168.0.146:8080/buses
-            var that=this;
+        },
+    },
+    mounted(){
+        
+    },
+    created(){
+        var that=this;
             axios.get('/buses')
             .then(function (response) {  
                 var buses=JSON.stringify(response.data);
@@ -38,13 +43,8 @@ export default {
                 that.$data.rutas=rutas;
             })
             .catch(function (error) {  
-                console.log(error);
-                
+                console.log(error); 
             });
-        },
-    },
-    mounted(){
-        
     }
 }
 </script>
