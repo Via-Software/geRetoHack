@@ -1,8 +1,8 @@
 <template>
     <div>
         <GmapMap
-        :center="{lat:10, lng:10}"
-        :zoom="7"
+        :center="{lat:20.658283, lng:-100.349658}"
+        :zoom="14"
         map-type-id="terrain"
         style="width: 500px; height: 300px"
         >
