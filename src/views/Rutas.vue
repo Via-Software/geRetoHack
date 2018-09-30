@@ -1,6 +1,9 @@
 <template>
-    <div>
+    <div class="cotainer">
         <button type="button" class="btn btn-primary btn-lg btn-block" @click.prevent="check">Checar rutas</button>
+        <b-dropdown id="ddown1" text="Dropdown Button" class="">
+            <b-dropdown-item></b-dropdown-item>
+        </b-dropdown>
     </div>
 </template>
 
