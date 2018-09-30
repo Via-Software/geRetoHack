@@ -11,7 +11,6 @@
 
 <script>
 // @ is an alias to /src
-
 export default {
   name: 'Maps',
   components: {
