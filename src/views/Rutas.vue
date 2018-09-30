@@ -15,7 +15,7 @@ export default {
     data(){
         return{
             rutas: Array(),
-        }
+            }
     },
     methods:{
         check(){
@@ -29,8 +29,9 @@ export default {
         var that=this;
             axios.get('/buses')
             .then(function (response) {  
-                var buses=JSON.stringify(response.data);
-                buses=JSON.parse(buses)
+                // var buses=JSON.stringify(response.data);
+                // buses=JSON.parse(buses)
+                var buses=response.data;
                 var rutas=Array();
                 var ruta="";
                 for(var bus in buses){

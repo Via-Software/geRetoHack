@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 axios.defaults.baseURL = 'http://192.168.0.146:8100';
-// axios.defaults.headers.common['Authorization'] = 'fasfdsa'
+axios.defaults.headers.common['Authorization'] = 'fasfdsa';
 axios.defaults.headers.get['Accepts'] = 'application/json';
 Vue.use(BootstrapVue);
 new Vue({
