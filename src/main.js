@@ -20,7 +20,7 @@ axios.defaults.headers.get['Accepts'] = 'application/json';
 Vue.use(BootstrapVue);
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'YOUR_API_TOKEN',
+    key: 'AIzaSyBs4Icy6WhjZ73-pqjPLKsq0p8I06AsCII',
     libraries: 'places', // This is required if you use the Autocomplete plugin
     // OR: libraries: 'places,drawing'
     // OR: libraries: 'places,drawing,visualization'
@@ -41,7 +41,7 @@ Vue.use(VueGoogleMaps, {
   //// Vue.component('GmapMarker', GmapMarker)
   //// then disable the following:
   // installComponents: true,
-})
+});
 new Vue({
   router,
   store,
