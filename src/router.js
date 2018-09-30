@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Header from './components/Header'
 import Rutas from './views/Rutas.vue'
+import Maps from './views/testmaps.vue'
 
 Vue.use(Router)
 
@@ -29,6 +30,13 @@ export default new Router({
       name: 'rutas',
       components:{
         default: Rutas,
+      }
+    },
+    {
+      path: '/maps',
+      name: 'maps',
+      components:{
+        default: Maps,
       }
     }
   ]
