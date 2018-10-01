@@ -1,6 +1,10 @@
 /* jshint esversion:6 */
 import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
+<<<<<<< HEAD
+=======
+import * as VueGoogleMaps from 'vue2-google-maps'
+>>>>>>> mapping
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -13,10 +17,21 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+
 axios.defaults.baseURL = 'http://192.168.0.146:8100';
-// axios.defaults.headers.common['Authorization'] = 'fasfdsa'
+axios.defaults.headers.common['Authorization'] = 'fasfdsa';
 axios.defaults.headers.get['Accepts'] = 'application/json';
 Vue.use(BootstrapVue);
+<<<<<<< HEAD
+=======
+Vue.use(VueGoogleMaps, {
+      load: {
+        key: 'AIzaSyBs4Icy6WhjZ73-pqjPLKsq0p8I06AsCII',
+        libraries: 'places', // This is required if you use the Autocomplete plugin
+        // OR: libraries: 'places,drawing'
+        // OR: libraries: 'places,drawing,visualization'
+      },});
+>>>>>>> mapping
 
 new Vue({
   router,
