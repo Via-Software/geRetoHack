@@ -1,18 +1,71 @@
 <template>
     <div>
+        <GmapMap
+        :center="center"
+        :zoom="14"
+        map-type-id="terrain"
+        style="width: 100%; height: 100%;"
+        >
+        <GmapMarker
+            :key="index"
+            v-for="(m, index) in markers"
+            :position="m.position"
+            :clickable="true"
+            :draggable="true"
+            @click="center=m.position"
+        />
+        </GmapMap>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-// var _ = require('lodash');
+
 export default {
     name:'Trazar',
     data(){
         return{
+            center: {
+            lat: 20.658945, 
+            lng: -100.348392
+            },
+            markers: [{
+            position: {
+                lat: 20.658945, 
+                lng: -100.348392
+            }
+            }, {
+            position: {
+                lat: 20.658945, 
+                lng: -100.348392
+            }
+            }],
             busesID: Array(),
-            datad:{"0":{"route":{"id":1,"name":"Ruta-01","stopList":[{"id":0,"latitude":"20.664786","longitud":"-100.400155","description":"Start - Paseos del Pedregal","checked":true,"timestamp":null},{"id":1,"latitude":"20.666318","longitud":"-100.399848","description":"","checked":true,"timestamp":null},{"id":2,"latitude":"20.661564","longitud":"-100.387427","description":"","checked":false,"timestamp":null},{"id":3,"latitude":"20.662431","longitud":"-100.376535","description":"","checked":false,"timestamp":null},{"id":4,"latitude":"20.659757","longitud":"-100.352586","description":"","checked":false,"timestamp":null},{"id":5,"latitude":"20.660278","longitud":"-100.347638","description":"","checked":false,"timestamp":null},{"id":6,"latitude":"20.657249","longitud":"-100.349287","description":"GEIQ","checked":false,"timestamp":null},{"id":7,"latitude":"20.656295","longitud":"-100.349487","description":"","checked":false,"timestamp":null},{"id":8,"latitude":"20.656541","longitud":"-100.348979","description":"","checked":false,"timestamp":null},{"id":9,"latitude":"20.660809","longitud":"-100.346416","description":"","checked":false,"timestamp":null},{"id":10,"latitude":"20.657258","longitud":"-100.343225","description":"","checked":false,"timestamp":null},{"id":11,"latitude":"20.656862","longitud":"-100.343060","description":"","checked":false,"timestamp":null},{"id":12,"latitude":"20.660420","longitud":"-100.343984","description":"","checked":false,"timestamp":null},{"id":13,"latitude":"20.662814","longitud":"-100.377411","description":"","checked":false,"timestamp":null},{"id":14,"latitude":"20.663190","longitud":"-100.391411","description":"","checked":false,"timestamp":null},{"id":15,"latitude":"20.666890","longitud":"-100.403681","description":"","checked":false,"timestamp":null},{"id":16,"latitude":"20.667733","longitud":"-100.404591","description":"","checked":false,"timestamp":null},{"id":17,"latitude":"20.667634","longitud":"-100.405032","description":"","checked":false,"timestamp":null},{"id":18,"latitude":"20.666347","longitud":"-100.401733","description":"","checked":false,"timestamp":null},{"id":19,"latitude":"20.664779","longitud":"-100.400450","description":"End - Paseos del Pedregal","checked":false,"timestamp":null}],"currentStop":0},"id":0,"name":"Bus-000","interrupted":false,"interruptionCause":null},"1":{"route":{"id":1,"name":"Ruta-01","stopList":[{"id":0,"latitude":"20.664786","longitud":"-100.400155","description":"Start - Paseos del Pedregal","checked":false,"timestamp":null},{"id":1,"latitude":"20.666318","longitud":"-100.399848","description":"","checked":false,"timestamp":null},{"id":2,"latitude":"20.661564","longitud":"-100.387427","description":"","checked":false,"timestamp":null},{"id":3,"latitude":"20.662431","longitud":"-100.376535","description":"","checked":false,"timestamp":null},{"id":4,"latitude":"20.659757","longitud":"-100.352586","description":"","checked":false,"timestamp":null},{"id":5,"latitude":"20.660278","longitud":"-100.347638","description":"","checked":false,"timestamp":null},{"id":6,"latitude":"20.657249","longitud":"-100.349287","description":"GEIQ","checked":false,"timestamp":null},{"id":7,"latitude":"20.656295","longitud":"-100.349487","description":"","checked":false,"timestamp":null},{"id":8,"latitude":"20.656541","longitud":"-100.348979","description":"","checked":false,"timestamp":null},{"id":9,"latitude":"20.660809","longitud":"-100.346416","description":"","checked":false,"timestamp":null},{"id":10,"latitude":"20.657258","longitud":"-100.343225","description":"","checked":false,"timestamp":null},{"id":11,"latitude":"20.656862","longitud":"-100.343060","description":"","checked":false,"timestamp":null},{"id":12,"latitude":"20.660420","longitud":"-100.343984","description":"","checked":false,"timestamp":null},{"id":13,"latitude":"20.662814","longitud":"-100.377411","description":"","checked":false,"timestamp":null},{"id":14,"latitude":"20.663190","longitud":"-100.391411","description":"","checked":false,"timestamp":null},{"id":15,"latitude":"20.666890","longitud":"-100.403681","description":"","checked":false,"timestamp":null},{"id":16,"latitude":"20.667733","longitud":"-100.404591","description":"","checked":false,"timestamp":null},{"id":17,"latitude":"20.667634","longitud":"-100.405032","description":"","checked":false,"timestamp":null},{"id":18,"latitude":"20.666347","longitud":"-100.401733","description":"","checked":false,"timestamp":null},{"id":19,"latitude":"20.664779","longitud":"-100.400450","description":"End - Paseos del Pedregal","checked":false,"timestamp":null}],"currentStop":0},"id":1,"name":"Bus-001","interrupted":false,"interruptionCause":null},"2":{"route":{"id":1,"name":"Ruta-01","stopList":[{"id":0,"latitude":"20.664786","longitud":"-100.400155","description":"Start - Paseos del Pedregal","checked":false,"timestamp":null},{"id":1,"latitude":"20.666318","longitud":"-100.399848","description":"","checked":false,"timestamp":null},{"id":2,"latitude":"20.661564","longitud":"-100.387427","description":"","checked":false,"timestamp":null},{"id":3,"latitude":"20.662431","longitud":"-100.376535","description":"","checked":false,"timestamp":null},{"id":4,"latitude":"20.659757","longitud":"-100.352586","description":"","checked":false,"timestamp":null},{"id":5,"latitude":"20.660278","longitud":"-100.347638","description":"","checked":false,"timestamp":null},{"id":6,"latitude":"20.657249","longitud":"-100.349287","description":"GEIQ","checked":false,"timestamp":null},{"id":7,"latitude":"20.656295","longitud":"-100.349487","description":"","checked":false,"timestamp":null},{"id":8,"latitude":"20.656541","longitud":"-100.348979","description":"","checked":false,"timestamp":null},{"id":9,"latitude":"20.660809","longitud":"-100.346416","description":"","checked":false,"timestamp":null},{"id":10,"latitude":"20.657258","longitud":"-100.343225","description":"","checked":false,"timestamp":null},{"id":11,"latitude":"20.656862","longitud":"-100.343060","description":"","checked":false,"timestamp":null},{"id":12,"latitude":"20.660420","longitud":"-100.343984","description":"","checked":false,"timestamp":null},{"id":13,"latitude":"20.662814","longitud":"-100.377411","description":"","checked":false,"timestamp":null},{"id":14,"latitude":"20.663190","longitud":"-100.391411","description":"","checked":false,"timestamp":null},{"id":15,"latitude":"20.666890","longitud":"-100.403681","description":"","checked":false,"timestamp":null},{"id":16,"latitude":"20.667733","longitud":"-100.404591","description":"","checked":false,"timestamp":null},{"id":17,"latitude":"20.667634","longitud":"-100.405032","description":"","checked":false,"timestamp":null},{"id":18,"latitude":"20.666347","longitud":"-100.401733","description":"","checked":false,"timestamp":null},{"id":19,"latitude":"20.664779","longitud":"-100.400450","description":"End - Paseos del Pedregal","checked":false,"timestamp":null}],"currentStop":0},"id":2,"name":"Bus-002","interrupted":false,"interruptionCause":null},"3":{"route":{"id":1,"name":"Ruta-01","stopList":[{"id":0,"latitude":"20.664786","longitud":"-100.400155","description":"Start - Paseos del Pedregal","checked":false,"timestamp":null},{"id":1,"latitude":"20.666318","longitud":"-100.399848","description":"","checked":false,"timestamp":null},{"id":2,"latitude":"20.661564","longitud":"-100.387427","description":"","checked":false,"timestamp":null},{"id":3,"latitude":"20.662431","longitud":"-100.376535","description":"","checked":false,"timestamp":null},{"id":4,"latitude":"20.659757","longitud":"-100.352586","description":"","checked":false,"timestamp":null},{"id":5,"latitude":"20.660278","longitud":"-100.347638","description":"","checked":false,"timestamp":null},{"id":6,"latitude":"20.657249","longitud":"-100.349287","description":"GEIQ","checked":false,"timestamp":null},{"id":7,"latitude":"20.656295","longitud":"-100.349487","description":"","checked":false,"timestamp":null},{"id":8,"latitude":"20.656541","longitud":"-100.348979","description":"","checked":false,"timestamp":null},{"id":9,"latitude":"20.660809","longitud":"-100.346416","description":"","checked":false,"timestamp":null},{"id":10,"latitude":"20.657258","longitud":"-100.343225","description":"","checked":false,"timestamp":null},{"id":11,"latitude":"20.656862","longitud":"-100.343060","description":"","checked":false,"timestamp":null},{"id":12,"latitude":"20.660420","longitud":"-100.343984","description":"","checked":false,"timestamp":null},{"id":13,"latitude":"20.662814","longitud":"-100.377411","description":"","checked":false,"timestamp":null},{"id":14,"latitude":"20.663190","longitud":"-100.391411","description":"","checked":false,"timestamp":null},{"id":15,"latitude":"20.666890","longitud":"-100.403681","description":"","checked":false,"timestamp":null},{"id":16,"latitude":"20.667733","longitud":"-100.404591","description":"","checked":false,"timestamp":null},{"id":17,"latitude":"20.667634","longitud":"-100.405032","description":"","checked":false,"timestamp":null},{"id":18,"latitude":"20.666347","longitud":"-100.401733","description":"","checked":false,"timestamp":null},{"id":19,"latitude":"20.664779","longitud":"-100.400450","description":"End - Paseos del Pedregal","checked":false,"timestamp":null}],"currentStop":0},"id":3,"name":"Bus-003","interrupted":false,"interruptionCause":null},"4":{"route":{"id":1,"name":"Ruta-01","stopList":[{"id":0,"latitude":"20.664786","longitud":"-100.400155","description":"Start - Paseos del Pedregal","checked":false,"timestamp":null},{"id":1,"latitude":"20.666318","longitud":"-100.399848","description":"","checked":false,"timestamp":null},{"id":2,"latitude":"20.661564","longitud":"-100.387427","description":"","checked":false,"timestamp":null},{"id":3,"latitude":"20.662431","longitud":"-100.376535","description":"","checked":false,"timestamp":null},{"id":4,"latitude":"20.659757","longitud":"-100.352586","description":"","checked":false,"timestamp":null},{"id":5,"latitude":"20.660278","longitud":"-100.347638","description":"","checked":false,"timestamp":null},{"id":6,"latitude":"20.657249","longitud":"-100.349287","description":"GEIQ","checked":false,"timestamp":null},{"id":7,"latitude":"20.656295","longitud":"-100.349487","description":"","checked":false,"timestamp":null},{"id":8,"latitude":"20.656541","longitud":"-100.348979","description":"","checked":false,"timestamp":null},{"id":9,"latitude":"20.660809","longitud":"-100.346416","description":"","checked":false,"timestamp":null},{"id":10,"latitude":"20.657258","longitud":"-100.343225","description":"","checked":false,"timestamp":null},{"id":11,"latitude":"20.656862","longitud":"-100.343060","description":"","checked":false,"timestamp":null},{"id":12,"latitude":"20.660420","longitud":"-100.343984","description":"","checked":false,"timestamp":null},{"id":13,"latitude":"20.662814","longitud":"-100.377411","description":"","checked":false,"timestamp":null},{"id":14,"latitude":"20.663190","longitud":"-100.391411","description":"","checked":false,"timestamp":null},{"id":15,"latitude":"20.666890","longitud":"-100.403681","description":"","checked":false,"timestamp":null},{"id":16,"latitude":"20.667733","longitud":"-100.404591","description":"","checked":false,"timestamp":null},{"id":17,"latitude":"20.667634","longitud":"-100.405032","description":"","checked":false,"timestamp":null},{"id":18,"latitude":"20.666347","longitud":"-100.401733","description":"","checked":false,"timestamp":null},{"id":19,"latitude":"20.664779","longitud":"-100.400450","description":"End - Paseos del Pedregal","checked":false,"timestamp":null}],"currentStop":0},"id":4,"name":"Bus-004","interrupted":false,"interruptionCause":null},"100":{"route":{"id":100,"name":"Ruta-100","stopList":[{"id":0,"latitude":"20.664786","longitud":"-100.400155","description":"Start - Paseos del Pedregal","checked":false,"timestamp":null},{"id":1,"latitude":"20.666318","longitud":"-100.399848","description":"","checked":false,"timestamp":null},{"id":2,"latitude":"20.661564","longitud":"-100.387427","description":"","checked":false,"timestamp":null},{"id":3,"latitude":"20.662431","longitud":"-100.376535","description":"","checked":false,"timestamp":null},{"id":4,"latitude":"20.659757","longitud":"-100.352586","description":"","checked":false,"timestamp":null},{"id":5,"latitude":"20.660278","longitud":"-100.347638","description":"","checked":false,"timestamp":null},{"id":6,"latitude":"20.657249","longitud":"-100.349287","description":"GEIQ","checked":false,"timestamp":null},{"id":7,"latitude":"20.656295","longitud":"-100.349487","description":"","checked":false,"timestamp":null},{"id":8,"latitude":"20.656541","longitud":"-100.348979","description":"","checked":false,"timestamp":null},{"id":9,"latitude":"20.660809","longitud":"-100.346416","description":"","checked":false,"timestamp":null},{"id":10,"latitude":"20.657258","longitud":"-100.343225","description":"","checked":false,"timestamp":null},{"id":11,"latitude":"20.656862","longitud":"-100.343060","description":"","checked":false,"timestamp":null},{"id":12,"latitude":"20.660420","longitud":"-100.343984","description":"","checked":false,"timestamp":null},{"id":13,"latitude":"20.662814","longitud":"-100.377411","description":"","checked":false,"timestamp":null},{"id":14,"latitude":"20.663190","longitud":"-100.391411","description":"","checked":false,"timestamp":null},{"id":15,"latitude":"20.666890","longitud":"-100.403681","description":"","checked":false,"timestamp":null},{"id":16,"latitude":"20.667733","longitud":"-100.404591","description":"","checked":false,"timestamp":null},{"id":17,"latitude":"20.667634","longitud":"-100.405032","description":"","checked":false,"timestamp":null},{"id":18,"latitude":"20.666347","longitud":"-100.401733","description":"","checked":false,"timestamp":null},{"id":19,"latitude":"20.664779","longitud":"-100.400450","description":"End - Paseos del Pedregal","checked":false,"timestamp":null}],"currentStop":0},"id":100,"name":"Bus-100","interrupted":false,"interruptionCause":null}}
-        }
+            coordinates : [
+                {lat: 20.664786, lng: -100.400155},
+                {lat: 20.666318, lng: -100.399848},
+                {lat: 20.661564, lng: -100.387427},
+                {lat: 20.662431, lng: -100.376535},
+                {lat: 20.659757, lng: -100.352586},
+                {lat: 20.660278, lng: -100.347638},
+                {lat: 20.657249, lng: -100.349287},
+                {lat: 20.656295, lng: -100.349487},
+                {lat: 20.656541, lng: -100.348979},
+                {lat: 20.660809, lng: -100.346416},
+                {lat: 20.657258, lng: -100.343225},
+                {lat: 20.656862, lng: -100.343060},
+                {lat: 20.660420, lng: -100.343984},
+                {lat: 20.662814, lng: -100.377411},
+                {lat: 20.663190, lng: -100.391411},
+                {lat: 20.666890, lng: -100.403681},
+                {lat: 20.667733, lng: -100.404591},
+                {lat: 20.667634, lng: -100.405032},
+                {lat: 20.666347, lng: -100.401733},
+                {lat: 20.664779, lng: -100.400450}
+            ],
+            }
+    },
+    methods:{
     },
     created(){
         var that=this;
@@ -33,19 +86,9 @@ export default {
             }
             console.log(that.busesID);
         })
-        // var buses=that.datad;
-        // for(var bus in buses){
-        //     var id=buses[bus].id;
-        //     var stops=buses[bus].route.stopList;
-        //     var set="Sin Salida";
-        //     for(var l in stops){
-        //         // console.log(stopss[l].checked);
-        //         if(stops[l].checked!=false){
-        //             set=stops[l].id;
-        //         }
-        //     }
-        //     console.log('valor %s - %s',id,set);
-        // }
+        .catch(function (error) {  
+            console.log(error);
+        })
     }
 }
 </script>
